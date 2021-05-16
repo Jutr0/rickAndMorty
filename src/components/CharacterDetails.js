@@ -18,6 +18,7 @@ const CharacterDetails = (props) => {
       .get(`/episode/${episodes}`)
       .then((result) => {
         console.log(result);
+        if(result.data.length !== undefined) {
         tempEpisodes = result.data.map((step) => {
           return (
             <div key={step.id} className="p-4 mx-5">
@@ -33,7 +34,25 @@ const CharacterDetails = (props) => {
               <hr />
             </div>
           );
-        });
+        });}
+        else {
+            tempEpisodes = (
+
+                <div key={result.data.id} className="p-4 mx-5">
+              <span>
+                <span className="font-medium text-lg">Title: </span>
+                {result.data.name}
+              </span>
+              <br />
+              <span className="mx-3">{result.data.episode}</span>
+              <span>{result.data.air_date}</span>
+              <br />
+              <br />
+              <hr />
+            </div>
+
+            )
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -74,7 +93,7 @@ const CharacterDetails = (props) => {
       <div className="container bg-green-600 m-10 p-9 mx-auto rounded-3xl">
         <span className=" font-bold uppercase text-2xl">Episodes:</span>
 
-        {episodesToRender}
+        {props.episode.length?episodesToRender:<span className="p-8 flex mx-3 max-w-full items-center justify-center pb-20 text-6xl font-bold uppercase">Not Found</span>}
       </div>
     </Fragment>
   );

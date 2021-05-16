@@ -54,7 +54,7 @@ const LocationDetails = (props) => {
       </div>
       <div className="container bg-green-600 m-10 p-0 mx-auto flex justify-evenly items-center rounded-3xl flex-col divide-y-2 divide-dashed">
         <span className=" font-bold uppercase text-3xl p-10 ">Residents: </span>
-        {residents.length?residentsToRender:<span className="p-8 flex mx-3 max-w-full items-center justify-center pb-20 text-6xl font-bold uppercase"style={{borderTop:'none', width:"70%"}}>Not Found</span>}
+        {residents.length?residentsToRender:<span className="p-8 flex mx-3 max-w-full items-center justify-center pb-20 text-6xl font-bold uppercase" style={{borderTop:'none', width:"70%"}}>Not Found</span>}
       </div>
     </Fragment>
   );
