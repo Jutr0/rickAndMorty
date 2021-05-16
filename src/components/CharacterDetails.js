@@ -18,7 +18,7 @@ const CharacterDetails = (props) => {
       .get(`/episode/${episodes}`)
       .then((result) => {
         console.log(result);
-        tempEpisodes = [result.data].map((step) => {
+        tempEpisodes = result.data.map((step) => {
           return (
             <div key={step.id} className="p-4 mx-5">
               <span>
