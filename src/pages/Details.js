@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
+import { useContext, useEffect, useState, Fragment } from "react";
+import { withRouter, Link } from "react-router-dom";
 import CharacterDetails from "../components/CharacterDetails";
 import EpisodeDetails from "../components/EpisodeDetails";
 import LocationDetails from "../components/LocationDetails";
@@ -53,7 +53,16 @@ const Details = (props) => {
     }
   }, [loading]);
 
-  return loading ? <h1>Loading</h1> : pageToRender;
+  return loading ? (
+    <h1>Loading</h1>
+  ) : (
+    <Fragment>
+      <Link to="/" className="container text-4xl font-semibold m-10">
+        HOME
+      </Link>
+      {pageToRender}
+    </Fragment>
+  );
 };
 
 export default withRouter(Details);
