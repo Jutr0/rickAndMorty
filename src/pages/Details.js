@@ -11,6 +11,10 @@ const Details = (props) => {
   const [loading, setLoading] = useState(true);
   const [pageToRender, setPageToRender] = useState("");
 
+  const loadPage = () => {
+    setLoading(true);
+  };
+
   useEffect(() => {
     if (loading) {
       apiCaller
@@ -26,17 +30,25 @@ const Details = (props) => {
     } else {
       switch (type) {
         case "character": {
-          setPageToRender(<CharacterDetails {...apiResponse.data} />);
+          setPageToRender(
+            <CharacterDetails {...apiResponse.data} load={loadPage} />
+          );
           break;
         }
-        case 'location':{
-          setPageToRender(<LocationDetails {...apiResponse.data} />)
+        case "location": {
+          setPageToRender(
+            <LocationDetails {...apiResponse.data} load={loadPage} />
+          );
           break;
         }
-        case "episode":{
-          setPageToRender(<EpisodeDetails {...apiResponse.data} />)
+        case "episode": {
+          setPageToRender(
+            <EpisodeDetails {...apiResponse.data} load={loadPage} />
+          );
+          break;
         }
         default:
+          setPageToRender(<span>Not Found</span>);
       }
     }
   }, [loading]);

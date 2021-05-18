@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Switch, BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 
 import { APIContext } from "./utils/APIContext";
 import Home from "./pages/Home";
@@ -13,16 +13,7 @@ const apiCaller = axios.create({
 
 function App() {
   const [apiResponse, setApiResponse] = useState({});
-  useEffect(() => {
-    apiCaller
-      .get("/")
-      .then((response) => {
-        setApiResponse(response);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+
   return (
     <APIContext.Provider value={[apiResponse, setApiResponse, apiCaller]}>
       <Router>
